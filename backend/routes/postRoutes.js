@@ -14,6 +14,7 @@ cloudinary.config({
 });
 
 router.route('/').get(async (req, res) => {
+  // Get all posts from DB
   try {
     const posts = await Post.find({});
     res.status(200).json({ success: true, data: posts });
@@ -23,6 +24,7 @@ router.route('/').get(async (req, res) => {
 });
 
 router.route('/').post(async (req, res) => {
+  // Create a new post
   try {
     const { name, prompt, photo } = req.body;
     const photoUrl = await cloudinary.uploader.upload(photo);
