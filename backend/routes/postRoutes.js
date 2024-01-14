@@ -27,6 +27,9 @@ router.route('/').post(async (req, res) => {
   // Create a new post
   try {
     const { name, prompt, photo } = req.body;
+    if(!name || !prompt || !photo) {
+      return res.status(400).json({ success: false, message: 'Please fill out all fields' });
+    }
     const photoUrl = await cloudinary.uploader.upload(photo);
 
     const newPost = await Post.create({
