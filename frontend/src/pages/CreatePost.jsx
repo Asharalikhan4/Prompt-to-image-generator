@@ -21,7 +21,7 @@ const CreatePost = () => {
         if (form.prompt) {
           try {
             setGeneratingImg(true);
-            const response = await fetch(BaseUrl + "/quikpik", {
+            const response = await fetch(BaseUrl + "/api/v1/quikpik", {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
@@ -55,7 +55,7 @@ const CreatePost = () => {
         if(form.prompt && form.photo){
             setLoading(true);
             try{
-                const response = await fetch(BaseUrl + "/post",{
+                const response = await fetch(BaseUrl + "/api/v1/post",{
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

@@ -28,7 +28,7 @@ const Home = () => {
         const fetchPosts = async () => {
             setLoading(true);
             try {
-                const response = await fetch(BaseUrl + "/post", {
+                const response = await fetch(BaseUrl + "/api/v1/post", {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",

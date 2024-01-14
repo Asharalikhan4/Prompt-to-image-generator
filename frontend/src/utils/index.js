@@ -12,4 +12,4 @@ export async function downloadImage(_id, photo){
     FileSaver.saveAs(photo, `download-${_id}.jpg`);
 }
 
-export const BaseUrl = "https://prompt-to-image-generator-api.onrender.com/";
+export const BaseUrl = "https://prompt-to-image-generator-api.onrender.com";
