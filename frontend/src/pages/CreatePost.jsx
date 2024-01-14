@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 import { preview } from "../assets";
-import { BaseUrl, getRandomPrompt } from "../utils"
+import { getRandomPrompt } from "../utils"
 import { FormField, Loader } from "../components";
 
 const CreatePost = () => {
@@ -21,7 +21,7 @@ const CreatePost = () => {
         if (form.prompt) {
           try {
             setGeneratingImg(true);
-            const response = await fetch(BaseUrl + "/api/v1/quikpik", {
+            const response = await fetch("https://prompt-to-image-generator-api.onrender.com/api/v1/quikpik", {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
@@ -55,7 +55,7 @@ const CreatePost = () => {
         if(form.prompt && form.photo){
             setLoading(true);
             try{
-                const response = await fetch(BaseUrl + "/api/v1/post",{
+                const response = await fetch("https://prompt-to-image-generator-api.onrender.com/api/v1/post",{
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

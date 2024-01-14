@@ -11,5 +11,3 @@ export function getRandomPrompt() {
 export async function downloadImage(_id, photo){
     FileSaver.saveAs(photo, `download-${_id}.jpg`);
 }
-
-export const BaseUrl = "https://prompt-to-image-generator-api.onrender.com";
