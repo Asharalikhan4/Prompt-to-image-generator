@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 import { preview } from "../assets";
-import { getRandomPrompt } from "../utils"
+import { BaseUrl, getRandomPrompt } from "../utils"
 import { FormField, Loader } from "../components";
 
 const CreatePost = () => {
@@ -20,7 +21,7 @@ const CreatePost = () => {
         if (form.prompt) {
           try {
             setGeneratingImg(true);
-            const response = await fetch('https://college-project-server-asharalikhan4.vercel.app/api/v1/quikpik', {
+            const response = await fetch(BaseUrl + "/quikpik", {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
@@ -33,12 +34,12 @@ const CreatePost = () => {
             const data = await response.json();
             setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
           } catch (err) {
-            alert(err);
+            toast.error(err);
           } finally {
             setGeneratingImg(false);
           }
         } else {
-          alert('Please provide proper prompt');
+          toast.error('Please provide your name and a prompt');
         }
       };
 
@@ -47,7 +48,7 @@ const CreatePost = () => {
         if(form.prompt && form.photo){
             setLoading(true);
             try{
-                const response = await fetch("https://college-project-server-asharalikhan4.vercel.app/api/v1/post",{
+                const response = await fetch(BaseUrl + "/post",{
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -57,12 +58,12 @@ const CreatePost = () => {
                 await response.json();
                 navigate("/");
             } catch(err){
-                alert(err);
+                toast.error(err);
             } finally {
                 setLoading(false);
             }
         } else {
-            alert("Please provide proper prompt and generate an image");
+            toast.error("Please provide a prompt and an image");
         }
     }
 

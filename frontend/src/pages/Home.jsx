@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
+import toast from "react-hot-toast";
 
 import { Loader, Card, FormField } from "../components";
+import { BaseUrl } from "../utils";
 
 const RenderCards = ({ data, title }) => {
     if (data?.length > 0) {
@@ -26,7 +28,7 @@ const Home = () => {
         const fetchPosts = async () => {
             setLoading(true);
             try {
-                const response = await fetch("https://college-project-server-asharalikhan4.vercel.app/api/v1/post", {
+                const response = await fetch(BaseUrl + "/post", {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
@@ -37,7 +39,7 @@ const Home = () => {
                     setAllPosts(result?.data.reverse());
                 }
             } catch (error) {
-                alert(error);
+                toast.error(error);
             } finally {
                 setLoading(false);
             }
