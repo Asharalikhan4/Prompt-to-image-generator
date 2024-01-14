@@ -2,9 +2,9 @@ import express from "express";
 import * as dotenv from "dotenv";
 import cors from "cors";
 
-import connectDB from "../mongodb/connectDB.js";
-import postRoutes from "../routes/postRoutes.js"
-import quikpikRoutes from "../routes/quikpikRoutes.js";
+import connectDB from "./mongodb/connectDB.js"
+import postRoutes from "./routes/postRoutes.js";
+import quikpikRoutes from "./routes/quikpikRoutes.js";
 
 dotenv.config();
 
