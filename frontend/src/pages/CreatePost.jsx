@@ -32,7 +32,14 @@ const CreatePost = () => {
             });
     
             const data = await response.json();
-            setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
+            // setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
+            toast(data.result,{
+                icon: "🥹",
+                style: {
+                    background: "#3B444B",
+                    color: "#fff"
+                }
+            });
           } catch (err) {
             toast.error(err);
           } finally {
