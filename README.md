@@ -1,6 +1,6 @@
 # QuickPik
 
-- This is an AI based image generating image app.
+- This is an AI based text/prompt to image generating image app.
 - MERN Stack
 
 # Frontend
